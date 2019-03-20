@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -20,7 +20,8 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    @*<a class="nav-link" href="AboutUs">About Us</a>*@
+                    <a class="nav-link" asp-controller="Home" asp-action="AboutUs">About Us</a>
                 </li>
                 @*<li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -36,10 +37,9 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
 
-                
+                <a asp-controller="cart" class="btn btn-success" asp-action="Index">Check cart <sup style="font-size:large">@Context.Session.GetString("cartitem")</sup></a>
                 @*<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">*@
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Check Cart</button>
-            </form>
+                 </form>
         </div>
     </nav>
     <main role="main" class="container">

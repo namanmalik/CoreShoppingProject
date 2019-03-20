@@ -1,0 +1,27 @@
+﻿@model CoreEcommerceUserPanal.Models.Customers
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Login</h2>
+
+<p>@ViewBag.Error</p>
+<form class="form-signin" method="post" asp-controller="Customers" asp-action="login">
+    <img class="mb-4" src="~/images/logo.jpg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    <div class="col-12 mb-3">
+        <label asp-for="UserName" class="sr-only">UserName</label>
+        <input type="text" asp-for="UserName" class="form-control" placeholder="Enter User Name">
+    </div>
+
+    <div class="col-12 mb-3">
+        <label asp-for="Password" class="sr-only">Password</label>
+        <input type="password" asp-for="Password" class="form-control" placeholder="Enter Password">
+    </div>
+
+    <a class="btn btn-lg btn-primary btn-block" asp-controller="Cart" asp-action="Checkout">Sign in</a>
+    <a class="btn btn-lg btn-primary btn-block" asp-controller="Account" asp-action="Checkout">Admin Sign in</a>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+</form>
