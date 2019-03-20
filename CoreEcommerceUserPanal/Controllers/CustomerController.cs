@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreEcommerceUserPanal.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomersController : Controller
     {
-       ShoppingprojectContext context = new ShoppingprojectContext();
+        ShoppingprojectContext context = new ShoppingprojectContext();
         public IActionResult Index()
         {
             return View();
@@ -26,7 +26,7 @@ namespace CoreEcommerceUserPanal.Controllers
             context.Customers.Add(cust);
             context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
         public IActionResult Login()
         {
@@ -35,22 +35,22 @@ namespace CoreEcommerceUserPanal.Controllers
 
         [HttpPost]
 
-        public ActionResult Login(string username,string password)
+        public ActionResult Login(string username, string password)
         {
 
 
-            var user = context.Customers.Where(a => a.FirstName==username).SingleOrDefault();
+            var user = context.Customers.Where(a => a.UserName == username).SingleOrDefault();
             ViewBag.cust = user;
-            if (user != null)
+            if (user == null)
             {
                 ViewBag.Error = "Invalid Credentials";
                 return View("Index");
             }
-           else
+            else
             {
-                var userName = user.FirstName;
+                var userName = user.UserName;
                 int custId = ViewBag.cust.CustomerId;
-                if(username!=null && password!=null && username.Equals(userName) && password.Equals("12345"))
+                if (username != null && password != null && username.Equals(userName) && password.Equals("12345"))
                 {
                     HttpContext.Session.SetString("uname", username);
                     return RedirectToAction("checkout", "cart", new
@@ -60,13 +60,11 @@ namespace CoreEcommerceUserPanal.Controllers
                 }
                 else
                 {
-                    ViewBag.Error= "Invalid Credentials";
+                    ViewBag.Error = "Invalid credentials";
                     return View("Index");
                 }
             }
-
         }
-
         [Route("Logout")]
         [HttpGet]
         public IActionResult Logout()
@@ -74,6 +72,5 @@ namespace CoreEcommerceUserPanal.Controllers
             HttpContext.Session.Remove("uname");
             return RedirectToAction("Index");
         }
-
     }
 }
