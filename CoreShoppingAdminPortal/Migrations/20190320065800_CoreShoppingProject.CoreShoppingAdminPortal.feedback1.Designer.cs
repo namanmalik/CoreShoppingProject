@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreEcommerceUserPanal.Migrations
 {
     [DbContext(typeof(ShopDataDbContext))]
-    [Migration("20190308094520_CoreShoppingProject.CoreShoppingAdminPortal.shops3")]
-    partial class CoreShoppingProjectCoreShoppingAdminPortalshops3
+    [Migration("20190320065800_CoreShoppingProject.CoreShoppingAdminPortal.feedback1")]
+    partial class CoreShoppingProjectCoreShoppingAdminPortalfeedback1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,6 +73,25 @@ namespace CoreEcommerceUserPanal.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("CoreShoppingAdminPortal.Models.Feedback", b =>
+                {
+                    b.Property<int>("FeedbackId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment");
+
+                    b.Property<string>("EmaidId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<long>("PhoneNo");
+
+                    b.HasKey("FeedbackId");
+
+                    b.ToTable("Feedbacks");
+                });
+
             modelBuilder.Entity("CoreShoppingAdminPortal.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
@@ -90,6 +109,21 @@ namespace CoreEcommerceUserPanal.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("CoreShoppingAdminPortal.Models.OrderProduct", b =>
+                {
+                    b.Property<int>("OrderId");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("OrderId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderProducts");
                 });
 
             modelBuilder.Entity("CoreShoppingAdminPortal.Models.Product", b =>
@@ -160,6 +194,19 @@ namespace CoreEcommerceUserPanal.Migrations
                     b.HasOne("CoreShoppingAdminPortal.Models.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CoreShoppingAdminPortal.Models.OrderProduct", b =>
+                {
+                    b.HasOne("CoreShoppingAdminPortal.Models.Order", "Order")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CoreShoppingAdminPortal.Models.Product", "Product")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

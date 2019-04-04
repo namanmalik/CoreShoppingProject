@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CoreShoppingAdminPortal.Migrations
+namespace CoreEcommerceUserPanal.Migrations
 {
     public partial class CoreShoppingProjectCoreShoppingAdminPortalshops3 : Migration
     {

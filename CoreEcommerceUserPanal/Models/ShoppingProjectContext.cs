@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace CoreEcommerceUserPanal.Models
 {
-    public partial class ShoppingprojectContext : DbContext
+    public partial class ShoppingProjectContext : DbContext
     {
-        public ShoppingprojectContext()
+        public ShoppingProjectContext()
         {
         }
 
-        public ShoppingprojectContext(DbContextOptions<ShoppingprojectContext> options)
+        public ShoppingProjectContext(DbContextOptions<ShoppingProjectContext> options)
             : base(options)
         {
         }
@@ -18,6 +18,7 @@ namespace CoreEcommerceUserPanal.Models
         public virtual DbSet<Admins> Admins { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
+        public virtual DbSet<Feedbacks> Feedbacks { get; set; }
         public virtual DbSet<OrderProducts> OrderProducts { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Products> Products { get; set; }
@@ -27,8 +28,8 @@ namespace CoreEcommerceUserPanal.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=TRD-520;Database=Shoppingproject;Integrated Security=true;");
+// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=TRD-520; Database=ShoppingProject; Integrated Security=true;");
             }
         }
 
@@ -49,6 +50,11 @@ namespace CoreEcommerceUserPanal.Models
                 entity.HasKey(e => e.CustomerId);
 
                 entity.Property(e => e.ShippingAddress).HasColumnName("Shipping_Address");
+            });
+
+            modelBuilder.Entity<Feedbacks>(entity =>
+            {
+                entity.HasKey(e => e.FeedbackId);
             });
 
             modelBuilder.Entity<OrderProducts>(entity =>

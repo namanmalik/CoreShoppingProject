@@ -1,6 +1,6 @@
 using System;
 
-namespace CoreShoppingAdminPortal.Models
+namespace CoreEcommerceUserPanal.Models
 {
     public class ErrorViewModel
     {

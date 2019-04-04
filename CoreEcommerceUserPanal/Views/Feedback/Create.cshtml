@@ -1,0 +1,28 @@
+﻿@model CoreEcommerceUserPanal.Models.Feedbacks
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<div class="container">
+    <form asp-action="Create" asp-controller="Feedback">
+
+        <label asp-for="Name">First Name</label>
+        <input asp-for="Name" type="text" id="name" placeholder="Your name..">
+
+        <label asp-for="EmaidId">Email Id</label>
+        <input asp-for="EmaidId" type="email" id="email" placeholder="Your Email Id ..">
+       
+        <label asp-for="PhoneNo">Phone No</label>
+        <input asp-for="PhoneNo" type="number" id="phone" placeholder="Your Phone No ..">
+
+
+        <label asp-for="Comment">Comment</label>
+        <textarea asp-for="Comment" id="comment" placeholder="Write something.." style="height:200px"></textarea>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>

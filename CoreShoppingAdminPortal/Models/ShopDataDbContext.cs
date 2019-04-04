@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoreShoppingAdminPortal.Models
+namespace CoreEcommerceUserPanal.Models
 {
     public class ShopDataDbContext:DbContext
     {
@@ -16,6 +16,8 @@ namespace CoreShoppingAdminPortal.Models
         public DbSet<ProductCategory> Categories { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+
         public ShopDataDbContext(DbContextOptions<ShopDataDbContext> options) : base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

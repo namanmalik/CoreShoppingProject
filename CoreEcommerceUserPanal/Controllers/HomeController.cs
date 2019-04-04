@@ -12,7 +12,7 @@ namespace CoreEcommerceUserPanal.Controllers
 {
     public class HomeController : Controller
     {
-        ShoppingprojectContext context = new ShoppingprojectContext();
+        ShoppingProjectContext context = new ShoppingProjectContext();
         public IActionResult Index()
         {
             var product = context.Products.ToList();

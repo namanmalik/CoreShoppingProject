@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CoreShoppingAdminPortal.Controllers
+namespace CoreEcommerceUserPanal.Controllers
 {     [Route("account")]
     public class AccountController : Controller
     {

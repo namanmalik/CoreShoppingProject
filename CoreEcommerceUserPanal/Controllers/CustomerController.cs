@@ -10,7 +10,7 @@ namespace CoreEcommerceUserPanal.Controllers
 {
     public class CustomersController : Controller
     {
-        ShoppingprojectContext context = new ShoppingprojectContext();
+        ShoppingProjectContext context = new ShoppingProjectContext();
         public IActionResult Index()
         {
             return View();
@@ -50,7 +50,7 @@ namespace CoreEcommerceUserPanal.Controllers
             {
                 var userName = user.UserName;
                 int custId = ViewBag.cust.CustomerId;
-                if (username != null && password != null && username.Equals(userName) && password.Equals("12345"))
+                if (username != null && password != null && username.Equals(userName) && password.Equals(user.Password))
                 {
                     HttpContext.Session.SetString("uname", username);
                     return RedirectToAction("checkout", "cart", new

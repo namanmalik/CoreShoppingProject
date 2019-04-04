@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CoreShoppingAdminPortal.Models
+namespace CoreEcommerceUserPanal.Models
 {
     public class Admin
     {

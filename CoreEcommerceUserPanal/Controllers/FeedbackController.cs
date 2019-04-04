@@ -7,31 +7,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreEcommerceUserPanal.Controllers
 {
-    public class CustomerController : Controller
+    public class FeedbackController : Controller
     {
-        ShopDataDbContext context;
-        public CustomerController(ShopDataDbContext _context)
-        {
-            context = _context;
-        }
+        ShoppingProjectContext context =new ShoppingProjectContext();
+       
         public IActionResult Index()
         {
             return View();
         }
-
         [HttpGet]
-        public IActionResult Create()
+        public ViewResult Create()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Customer customer)
+        public ActionResult Create(Feedbacks fed)
         {
-            context.Customers.Add(customer);
+            context.Feedbacks.Add(fed);
             context.SaveChanges();
-            return RedirectToAction("Index");
 
+            return RedirectToAction("Index", "Home");
         }
-
     }
 }

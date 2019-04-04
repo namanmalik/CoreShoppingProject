@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CoreShoppingAdminPortal.Migrations
+namespace CoreEcommerceUserPanal.Migrations
 {
     public partial class CoreShoppingProjectCoreShoppingAdminPortalShop10 : Migration
     {

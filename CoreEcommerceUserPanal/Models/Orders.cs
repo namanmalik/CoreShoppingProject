@@ -8,7 +8,7 @@ namespace CoreEcommerceUserPanal.Models
         public Orders()
         {
             OrderProducts = new HashSet<OrderProducts>();
-        }  
+        }
 
         public int OrderId { get; set; }
         public float OrderPrice { get; set; }

@@ -13,7 +13,7 @@ namespace CoreEcommerceUserPanal.Controllers
     [Route("cart")]
     public class CartController : Controller
     {
-        ShoppingprojectContext context = new ShoppingprojectContext();
+        ShoppingProjectContext context = new ShoppingProjectContext();
         [Route("index")]
 
         public IActionResult Index()
@@ -122,9 +122,11 @@ namespace CoreEcommerceUserPanal.Controllers
         [Route("Details/{id}")]
         public IActionResult Details(int id)
         {
-            var det = context.Products.Find(id);
-            ViewBag.Categories = new SelectList(context.Categories, "ProductCategoryId", "CategoryName");
-            return View(det);
+
+            var detail = context.Products.Find(id);
+            var cid = context.Products.Find(id);
+            ViewBag.cname = context.Categories.Find(cid.ProductCategoryId);
+            return View(detail);
         }
         public IActionResult Checkout()
         {
